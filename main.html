@@ -11,7 +11,7 @@
   a{color:inherit;text-decoration:none;}
   .container{max-width:720px;margin:0 auto;padding:0 20px;}
 
-  /* HEADER & NAV */
+  /* HEADER */
   header{position:sticky;top:0;z-index:50;background:rgba(13,15,18,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
   .header-row{display:flex;align-items:center;gap:14px;padding:12px 20px;max-width:720px;margin:0 auto;}
   .avatar-sm,.avatar-lg{border-radius:50%;overflow:hidden;background:var(--amber);flex-shrink:0;}
@@ -20,15 +20,9 @@
   img{width:100%;height:100%;object-fit:cover;display:block;}
   .header-name{font-family:var(--mono);font-weight:700;font-size:14px;}
   .header-role{font-family:var(--mono);font-size:12px;color:var(--amber);}
-  .tab-nav{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;}
-  .tab-btn{flex:1;font-family:var(--mono);font-size:11px;padding:12px 6px;color:var(--dim);background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;}
-  .tab-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;}
-  .tab-btn.active{color:var(--amber);}
-  .tab-btn.active::after{content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:2px;background:var(--amber);}
 
-  /* SECTIONS & UI */
-  .tab-panel{display:none;padding:28px 0 50px;}
-  .tab-panel.active{display:block;}
+  /* ABOUT SECTION UI */
+  .about-section{padding:28px 0 50px;}
   .section-title{font-family:var(--mono);font-size:13px;color:var(--text);margin:24px 0 14px;display:flex;align-items:center;gap:8px;}
   .section-title::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--amber);}
   
@@ -41,27 +35,8 @@
   .btn{font-family:var(--mono);font-size:12px;padding:9px 16px;border-radius:6px;border:1px solid var(--border);display:inline-block;}
   .btn-primary{background:var(--amber);color:#0d0f12;border-color:var(--amber);font-weight:700;}
 
-  /* CARDS & LISTS */
+  /* CARDS */
   .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:14px;}
-  .timeline{position:relative;padding-left:20px;border-left:1px solid var(--border);}
-  .t-item{position:relative;padding-bottom:18px;}
-  .t-dot{position:absolute;left:-25px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--amber);}
-  
-  /* SKILLS */
-  .skills-circles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:center;margin-top:12px;}
-  .circle-progress{width:76px;height:76px;border-radius:50%;background:conic-gradient(var(--amber) calc(var(--p)*1%),#1b1f26 0);display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;}
-  .circle-progress::before{content:'';position:absolute;width:62px;height:62px;border-radius:50%;background:var(--bg);}
-  .circle-val{position:relative;font-family:var(--mono);font-weight:700;font-size:13px;}
-  .knowledge-list{list-style:none;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:10px;}
-  .knowledge-list li::before{content:'✓ ';color:var(--amber);}
-
-  /* PROJECTS & CONTACT */
-  .projects-grid{display:grid;gap:12px;}
-  .tag-row{display:flex;gap:6px;margin:8px 0;}
-  .tag-row span{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:12px;background:#1b1f26;color:var(--dim);}
-  .contact-links{display:flex;flex-direction:column;gap:10px;max-width:320px;}
-  .contact-links a{font-family:var(--mono);font-size:13px;padding:12px;border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;gap:10px;}
-  .contact-links svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
   footer{text-align:center;padding:20px;font-family:var(--mono);font-size:11px;color:var(--dim);}
 </style>
@@ -76,17 +51,11 @@
       <div class="header-role">Aspiring Full Stack Dev</div>
     </div>
   </div>
-  <nav class="tab-nav container">
-    <button class="tab-btn active" onclick="showTab('about', this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>ABOUT</button>
-    <button class="tab-btn" onclick="showTab('resume', this)"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/></svg>RESUME</button>
-    <button class="tab-btn" onclick="showTab('works', this)"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="5"/><circle cx="12" cy="12" r="2"/></svg>WORKS</button>
-    <button class="tab-btn" onclick="showTab('contact', this)"><svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>CONTACT</button>
-  </nav>
 </header>
 
 <main class="container">
   <!-- ABOUT -->
-  <section class="tab-panel active" id="about">
+  <section class="about-section" id="about">
     <div class="hero-banner">
       <div class="avatar-lg"><img src="https://cdn.phototourl.com/free/2026-08-13-e6fae289-1e49-4fce-b732-136059cf0826.png" alt="Unish"></div>
     </div>
@@ -106,72 +75,12 @@
       <b style="color:var(--text);">Goal</b> — Become a confident full stack developer shipping full applications.
     </div>
   </section>
-
-  <!-- RESUME -->
-  <section class="tab-panel" id="resume">
-    <h2 class="section-title">Education</h2>
-    <div class="timeline">
-      <div class="t-item"><div class="t-dot"></div><h3>Self-Directed Learning</h3><p style="color:var(--dim); font-size:13px;">Building Full Stack Skills</p></div>
-      <div class="t-item"><div class="t-dot"></div><h3>+2 Completed</h3><p style="color:var(--dim); font-size:13px;">Higher Secondary Education</p></div>
-    </div>
-
-    <h2 class="section-title"><span style="color:var(--amber)">S</span>kills</h2>
-    <div style="font-family:var(--mono); font-size:13px; font-weight:700; margin-top:12px;">CODING</div>
-    <div class="skills-circles">
-      <div><div class="circle-progress" style="--p:90"><span class="circle-val">90%</span></div><div style="font-family:var(--mono); font-size:11px; color:var(--dim);">HTML / CSS</div></div>
-      <div><div class="circle-progress" style="--p:80"><span class="circle-val">80%</span></div><div style="font-family:var(--mono); font-size:11px; color:var(--dim);">JavaScript</div></div>
-      <div><div class="circle-progress" style="--p:75"><span class="circle-val">75%</span></div><div style="font-family:var(--mono); font-size:11px; color:var(--dim);">Python</div></div>
-      <div><div class="circle-progress" style="--p:70"><span class="circle-val">70%</span></div><div style="font-family:var(--mono); font-size:11px; color:var(--dim);">C Language</div></div>
-    </div>
-
-    <div style="font-family:var(--mono); font-size:13px; font-weight:700; margin-top:18px;">KNOWLEDGE</div>
-    <ul class="knowledge-list">
-      <li>Website hosting & deployment</li>
-      <li>Responsive web design</li>
-      <li>Git & GitHub version control</li>
-    </ul>
-  </section>
-
-  <!-- WORKS -->
-  <section class="tab-panel" id="works">
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid">
-      <div class="card">
-        <h3>Project One</h3>
-        <p style="color:var(--dim); font-size:13px;">Short project description goes here.</p>
-        <div class="tag-row"><span>HTML</span><span>CSS</span><span>JS</span></div>
-        <a href="#" style="font-family:var(--mono); font-size:12px; color:var(--amber);">GitHub →</a>
-      </div>
-      <div class="card">
-        <h3>Project Two</h3>
-        <p style="color:var(--dim); font-size:13px;">Short project description goes here.</p>
-        <div class="tag-row"><span>Python</span></div>
-        <a href="#" style="font-family:var(--mono); font-size:12px; color:var(--amber);">GitHub →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="tab-panel" id="contact">
-    <h2 class="section-title">Get In Touch</h2>
-    <p style="color:var(--dim); font-size:14px; margin-bottom:14px;">Open to opportunities and collaborations.</p>
-    <div class="contact-links">
-      <a href="mailto:your.email@example.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>your.email@example.com</a>
-      <a href="https://github.com/your-username" target="_blank"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>github.com/your-username</a>
-    </div>
-  </section>
 </main>
 
 <footer>© <span id="year"></span> Unish Niraula</footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  function showTab(id, btn){
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-  }
 </script>
 </body>
 </html>
