@@ -126,6 +126,58 @@
     margin-bottom: 10px;
   }
 
+  /* Fun Facts Styles */
+  .fun-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 480px) {
+    .fun-facts-grid { grid-template-columns: 1fr; }
+  }
+  .fact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .fact-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1.5px solid var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--amber);
+  }
+  .fact-icon-circle svg {
+    width: 30px;
+    height: 30px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .fact-number {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .fact-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 4px;
+  }
+
   .skill-item { margin-bottom: 16px; }
   .skill-item:last-child { margin-bottom: 0; }
   .skill-header { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 13px; margin-bottom: 6px; }
@@ -244,6 +296,32 @@
         <p class="card-desc">Security Consultants can check the code and scan for vulnerabilities.</p>
       </div>
 
+      <!-- Fun Facts Section -->
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Fun Facts
+      </h2>
+      <div class="fun-facts-grid">
+        <div class="fact-card">
+          <div class="fact-icon-circle">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" fill="none"/>
+              <text x="12" y="16" font-size="10" font-weight="bold" text-anchor="middle" fill="currentColor" stroke="none" font-family="'JetBrains Mono', monospace">JS</text>
+            </svg>
+          </div>
+          <div class="fact-number">100,000+ Lines</div>
+          <div class="fact-label">Written</div>
+        </div>
+
+        <div class="fact-card">
+          <div class="fact-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <div class="fact-number">3+ Countries</div>
+          <div class="fact-label">Visited</div>
+        </div>
+      </div>
+
       <h2 class="section-title">
         <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         Coding Skills
@@ -319,7 +397,6 @@
   </div>
 
 </main>
-
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
