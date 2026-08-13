@@ -1,253 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All-in-One Showcase</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --border: #334155;
-    }
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unish Niraula — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0d0f12;--surface:#15181d;--surface-2:#1b1f26;--border:#262b33;--text:#d5d9de;--dim:#7c8390;--amber:#e3b341;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:720px;margin:0 auto;padding:0 20px;}
+  
+  /* HEADER & NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(13,15,18,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .header-row{display:flex;align-items:center;gap:14px;padding:14px 20px;max-width:720px;margin:0 auto;}
+  .avatar-sm,.avatar-lg{border-radius:50%;overflow:hidden;background:var(--amber);flex-shrink:0;}
+  .avatar-sm{width:44px;height:44px;}
+  .avatar-lg{width:96px;height:96px;border:4px solid var(--bg);position:absolute;left:50%;bottom:-40px;transform:translateX(-50%);}
+  img{width:100%;height:100%;object-fit:cover;display:block;}
+  .header-name{font-family:var(--mono);font-weight:700;font-size:15px;}
+  .header-role{font-family:var(--mono);font-size:12px;color:var(--amber);}
+  .tab-nav{display:flex;border-bottom:1px solid var(--border);}
+  .tab-btn{flex:1;font-family:var(--mono);font-size:12px;padding:14px 8px;color:var(--dim);background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;}
+  .tab-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;}
+  .tab-btn.active{color:var(--amber);}
+  .tab-btn.active::after{content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:2px;background:var(--amber);}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
+  /* SECTIONS & CARDS */
+  .tab-panel{display:none;padding:32px 0 60px;}
+  .tab-panel.active{display:block;}
+  .section-title{font-family:var(--mono);font-size:14px;color:var(--text);margin:28px 0 16px;display:flex;align-items:center;gap:8px;}
+  .section-title::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--amber);}
+  
+  .hero-banner{height:120px;border-radius:12px;background:linear-gradient(120deg,#1b1f26,#262b33,#1b1f26);position:relative;margin-bottom:56px;}
+  .hero-text{text-align:center;padding-top:16px;}
+  .hero-text h1{font-family:var(--mono);font-size:24px;}
+  .btn-row{display:flex;justify-content:center;gap:12px;margin-top:16px;}
+  .btn{font-family:var(--mono);font-size:13px;padding:10px 18px;border-radius:6px;border:1px solid var(--border);}
+  .btn-primary{background:var(--amber);color:#0d0f12;border-color:var(--amber);font-weight:700;}
 
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+  /* TIMELINE & SKILLS */
+  .timeline{position:relative;padding-left:20px;border-left:1px solid var(--border);margin-bottom:20px;}
+  .t-item{position:relative;padding-bottom:20px;}
+  .t-dot{position:absolute;left:-25px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--amber);}
+  
+  .skills-category{display:flex;align-items:center;gap:10px;margin:20px 0 16px;font-family:var(--mono);font-size:13px;}
+  .skills-circles{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:center;}
+  .circle-progress{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--amber) calc(var(--p)*1%),var(--surface-2) 0);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;position:relative;}
+  .circle-progress::before{content:'';position:absolute;width:66px;height:66px;border-radius:50%;background:var(--bg);}
+  .circle-val{position:relative;font-family:var(--mono);font-weight:700;font-size:14px;}
 
-    header {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+  .knowledge-list{list-style:none;display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:13px;color:var(--dim);}
+  .knowledge-list li::before{content:'✓ ';color:var(--amber);}
 
-    header h1 {
-      font-size: 2.5rem;
-      color: var(--accent);
-    }
-
-    header p {
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    .card h2 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    /* Stats Grid */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .stat-item {
-      background: var(--bg);
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .stat-value {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--accent);
-    }
-
-    .stat-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Links & Lists */
-    .link-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .link-list a {
-      color: var(--text);
-      text-decoration: none;
-      background: var(--bg);
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      display: flex;
-      justify-content: space-between;
-      transition: border-color 0.2s;
-      border: 1px solid transparent;
-    }
-
-    .link-list a:hover {
-      border-color: var(--accent);
-    }
-
-    /* Gallery Grid */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-    }
-
-    .gallery-item {
-      background: var(--bg);
-      aspect-ratio: 16 / 9;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      border: 1px dashed var(--border);
-    }
-
-    /* Form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.75rem;
-      border-radius: 6px;
-      outline: none;
-    }
-
-    .contact-form button {
-      background: var(--accent);
-      color: var(--bg);
-      border: none;
-      padding: 0.75rem;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-      }
-    }
-  </style>
+  footer{text-align:center;padding:20px;font-family:var(--mono);font-size:12px;color:var(--dim);}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Overview Dashboard</h1>
-    <p>Everything in one single view</p>
-  </header>
+<header>
+  <div class="header-row">
+    <div class="avatar-sm"><img src="https://cdn.phototourl.com/free/2026-08-13-e6fae289-1e49-4fce-b732-136059cf0826.png" alt="Unish"></div>
+    <div>
+      <div class="header-name">Unish Niraula</div>
+      <div class="header-role">Full Stack Developer</div>
+    </div>
+  </div>
+  <nav class="tab-nav container">
+    <button class="tab-btn active" onclick="showTab('about', this)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>ABOUT
+    </button>
+    <button class="tab-btn" onclick="showTab('resume', this)">
+      <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/></svg>RESUME
+    </button>
+  </nav>
+</header>
 
-  <main class="dashboard-grid">
-
-    <!-- Profile & Bio -->
-    <section class="card">
-      <h2>About / Profile</h2>
-      <p style="line-height: 1.6; color: var(--text-muted);">
-        Welcome to the central hub. This section displays your primary biography, personal statement, or core business description.
-      </p>
-    </section>
-
-    <!-- Key Metrics -->
-    <section class="card">
-      <h2>Key Metrics</h2>
-      <div class="stats">
-        <div class="stat-item">
-          <div class="stat-value">124</div>
-          <div class="stat-label">Projects</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">98%</div>
-          <div class="stat-label">Rating</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">12.5k</div>
-          <div class="stat-label">Followers</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">24/7</div>
-          <div class="stat-label">Uptime</div>
-        </div>
+<main class="container">
+  <!-- ABOUT TAB -->
+  <section class="tab-panel active" id="about">
+    <div class="hero-banner">
+      <div class="avatar-lg"><img src="https://cdn.phototourl.com/free/2026-08-13-e6fae289-1e49-4fce-b732-136059cf0826.png" alt="Unish"></div>
+    </div>
+    <div class="hero-text">
+      <h1>Unish Niraula</h1>
+      <div class="header-role">Aspiring Full Stack Developer</div>
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary">Download CV</a>
       </div>
-    </section>
+    </div>
+    <h2 class="section-title">About Me</h2>
+    <p style="color:var(--dim); font-size:14px;">Building modern, responsive web applications using HTML, CSS, JS, Python, and C.</p>
+  </section>
 
-    <!-- Content & Links -->
-    <section class="card">
-      <h2>Quick Links & Resources</h2>
-      <ul class="link-list">
-        <li><a href="#"><span>Documentation</span> <span>→</span></a></li>
-        <li><a href="#"><span>Portfolio Items</span> <span>→</span></a></li>
-        <li><a href="#"><span>Social Media Profiles</span> <span>→</span></a></li>
-        <li><a href="#"><span>External Resources</span> <span>→</span></a></li>
-      </ul>
-    </section>
+  <!-- RESUME TAB -->
+  <section class="tab-panel" id="resume">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      <div class="t-item"><div class="t-dot"></div><h3>Self-Directed Learning</h3><p style="color:var(--dim); font-size:13px;">Full Stack Skills</p></div>
+      <div class="t-item"><div class="t-dot"></div><h3>+2 Completed</h3><p style="color:var(--dim); font-size:13px;">Higher Secondary</p></div>
+    </div>
 
-    <!-- Gallery / Showcase -->
-    <section class="card">
-      <h2>Media Showcase</h2>
-      <div class="gallery">
-        <div class="gallery-item">Item 1</div>
-        <div class="gallery-item">Item 2</div>
-        <div class="gallery-item">Item 3</div>
-        <div class="gallery-item">Item 4</div>
-      </div>
-    </section>
+    <h2 class="section-title"><span style="color:var(--amber)">S</span>kills</h2>
+    <div class="skills-category"><span>CODING</span></div>
+    <div class="skills-circles">
+      <div><div class="circle-progress" style="--p:90"><span class="circle-val">90%</span></div><div style="font-family:var(--mono); font-size:12px; color:var(--dim);">HTML / CSS</div></div>
+      <div><div class="circle-progress" style="--p:80"><span class="circle-val">80%</span></div><div style="font-family:var(--mono); font-size:12px; color:var(--dim);">JavaScript</div></div>
+      <div><div class="circle-progress" style="--p:75"><span class="circle-val">75%</span></div><div style="font-family:var(--mono); font-size:12px; color:var(--dim);">Python</div></div>
+      <div><div class="circle-progress" style="--p:70"><span class="circle-val">70%</span></div><div style="font-family:var(--mono); font-size:12px; color:var(--dim);">C Language</div></div>
+    </div>
 
-    <!-- Direct Contact -->
-    <section class="card" style="grid-column: span 1;">
-      <h2>Get in Touch</h2>
-      <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault();">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="3" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+    <div class="skills-category"><span>KNOWLEDGE</span></div>
+    <ul class="knowledge-list">
+      <li>Website hosting & deployment</li>
+      <li>Responsive web design</li>
+      <li>Git & GitHub version control</li>
+    </ul>
+  </section>
+</main>
 
-  </main>
+<footer>© <span id="year"></span> Unish Niraula</footer>
 
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  function showTab(id, btn){
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
 </body>
 </html>
-
