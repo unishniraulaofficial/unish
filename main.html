@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All-in-One Showcase</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    /* Stats Grid */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Links & Lists */
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .link-list a {
+      color: var(--text);
+      text-decoration: none;
+      background: var(--bg);
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      transition: border-color 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .link-list a:hover {
+      border-color: var(--accent);
+    }
+
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      background: var(--bg);
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border: 1px dashed var(--border);
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .contact-form button {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Overview Dashboard</h1>
+    <p>Everything in one single view</p>
+  </header>
+
+  <main class="dashboard-grid">
+
+    <!-- Profile & Bio -->
+    <section class="card">
+      <h2>About / Profile</h2>
+      <p style="line-height: 1.6; color: var(--text-muted);">
+        Welcome to the central hub. This section displays your primary biography, personal statement, or core business description.
+      </p>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="card">
+      <h2>Key Metrics</h2>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-value">124</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">98%</div>
+          <div class="stat-label">Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">12.5k</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">24/7</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content & Links -->
+    <section class="card">
+      <h2>Quick Links & Resources</h2>
+      <ul class="link-list">
+        <li><a href="#"><span>Documentation</span> <span>→</span></a></li>
+        <li><a href="#"><span>Portfolio Items</span> <span>→</span></a></li>
+        <li><a href="#"><span>Social Media Profiles</span> <span>→</span></a></li>
+        <li><a href="#"><span>External Resources</span> <span>→</span></a></li>
+      </ul>
+    </section>
+
+    <!-- Gallery / Showcase -->
+    <section class="card">
+      <h2>Media Showcase</h2>
+      <div class="gallery">
+        <div class="gallery-item">Item 1</div>
+        <div class="gallery-item">Item 2</div>
+        <div class="gallery-item">Item 3</div>
+        <div class="gallery-item">Item 4</div>
+      </div>
+    </section>
+
+    <!-- Direct Contact -->
+    <section class="card" style="grid-column: span 1;">
+      <h2>Get in Touch</h2>
+      <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+</body>
+</html>
+
