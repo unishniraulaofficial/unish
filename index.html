@@ -12,7 +12,6 @@
   .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 10px;color:var(--dim);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;border-right:1px solid rgba(255,255,255,.05);user-select:none}
   .nav-item:last-child{border-right:none} .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
   .nav-item:hover{color:var(--text);background:rgba(255,255,255,.02)} .nav-item.active{color:var(--amber);background:rgba(227,179,65,.03)}
-  .tab-content{display:none} .tab-content.active{display:block}
   header{position:sticky;top:0;z-index:50;background:rgba(13,15,18,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
   .header-row{display:flex;align-items:center;gap:14px;padding:12px 20px;max-width:720px;margin:0 auto}
   .avatar-sm,.avatar-lg{border-radius:50%;overflow:hidden;background:var(--amber);flex-shrink:0} .avatar-sm{width:40px;height:40px}
@@ -46,7 +45,6 @@
   .progress-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden} .progress-fill{height:100%;background:var(--amber);border-radius:4px}
   .knowledge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:13px} .knowledge-item span{color:var(--amber);font-weight:bold}
   .lang-item{display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;margin-bottom:10px} .lang-dots{color:var(--amber);letter-spacing:4px}
-  .empty-tab{text-align:center;padding:60px 20px;color:var(--dim);font-family:var(--mono);font-size:14px}
   footer{text-align:center;padding:20px;font-family:var(--mono);font-size:11px;color:var(--dim)}
 </style>
 </head>
@@ -60,120 +58,112 @@
 </header>
 
 <main class="container">
+  <!-- Clean navigation links without .html extensions -->
   <nav class="nav-box">
-    <div class="nav-item active" onclick="switchTab('home',this)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</div>
-    <a href="projects.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>PROJECTS</a>
-    <div class="nav-item" onclick="switchTab('contact',this)"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>CONTACT</div>
+    <a href="/" class="nav-item active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</a>
+    <a href="projects" class="nav-item"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>PROJECTS</a>
+    <a href="contact" class="nav-item"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>CONTACT</a>
   </nav>
 
-  <div id="home" class="tab-content active">
-    <section class="about-section">
-      <div class="hero-banner"><div class="avatar-lg"><img src="https://cdn.phototourl.com/free/2026-08-13-e6fae289-1e49-4fce-b732-136059cf0826.png" alt="Unish"></div></div>
-      <div class="hero-text">
-        <h1>Unish Niraula</h1>
-        <div class="header-role">Aspiring Full Stack Developer</div>
-        <div class="social-row">
-          <a href="mailto:unishniraula.official@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
-          <a href="https://www.instagram.com/bhar_dwaj.0" target="_blank"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="https://www.facebook.com/share/1JqJ5PgXSt/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://www.tiktok.com/@unish.niraula_0" target="_blank"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
-        </div>
-        <a href="#" class="btn btn-primary">Download CV</a>
+  <section class="about-section">
+    <div class="hero-banner"><div class="avatar-lg"><img src="https://cdn.phototourl.com/free/2026-08-13-e6fae289-1e49-4fce-b732-136059cf0826.png" alt="Unish"></div></div>
+    <div class="hero-text">
+      <h1>Unish Niraula</h1>
+      <div class="header-role">Aspiring Full Stack Developer</div>
+      <div class="social-row">
+        <a href="mailto:unishniraula.official@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+        <a href="https://www.instagram.com/bhar_dwaj.0" target="_blank"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/share/1JqJ5PgXSt/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.tiktok.com/@unish.niraula_0" target="_blank"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
       </div>
+      <a href="#" class="btn btn-primary">Download CV</a>
+    </div>
 
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>About Me</h2>
-      <p style="color:var(--dim);font-size:14px;">Completed +2 and continuing bachelor degree with building skills toward full stack developer using HTML, CSS, JAVASCRIPT, PYTHON and C languages.</p>
-      <div class="card" style="border-left:3px solid var(--amber);font-family:var(--mono);font-size:12px;color:var(--dim);"><b style="color:var(--text);">Goal</b> — Become a confident full stack developer shipping full applications.</div>
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>About Me</h2>
+    <p style="color:var(--dim);font-size:14px;">Completed +2 and continuing bachelor degree with building skills toward full stack developer using HTML, CSS, JAVASCRIPT, PYTHON and C languages.</p>
+    <div class="card" style="border-left:3px solid var(--amber);font-family:var(--mono);font-size:12px;color:var(--dim);"><b style="color:var(--text);">Goal</b> — Become a confident full stack developer shipping full applications.</div>
 
-      <!-- Services -->
-      <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="service-title">Front-end</div><p class="card-desc">Modern and mobile-ready website that will help you reach all of your marketing.</p></div>
-      <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div class="service-title">Back-End</div><p class="card-desc">UI/UX focus on the user, frontend focus on the settings of the user, and backend focus on the data.</p></div>
-      <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0-7.07 2.93L12 18l7.07-13.07A10 10 0 0 0 12 2z"/></svg></div><div class="service-title">WordPress Development</div><p class="card-desc">WordPress development services improve business websites.</p></div>
-      <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="service-title">WordPress Security</div><p class="card-desc">Security Consultants can check the code and scan for vulnerabilities.</p></div>
+    <!-- Services -->
+    <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="service-title">Front-end</div><p class="card-desc">Modern and mobile-ready website that will help you reach all of your marketing.</p></div>
+    <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div><div class="service-title">Back-End</div><p class="card-desc">UI/UX focus on the user, frontend focus on the settings of the user, and backend focus on the data.</p></div>
+    <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0-7.07 2.93L12 18l7.07-13.07A10 10 0 0 0 12 2z"/></svg></div><div class="service-title">WordPress Development</div><p class="card-desc">WordPress development services improve business websites.</p></div>
+    <div class="service-card"><div class="service-icon-circle"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="service-title">WordPress Security</div><p class="card-desc">Security Consultants can check the code and scan for vulnerabilities.</p></div>
 
-      <!-- Pricing Section -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Pricing</h2>
-      <div class="grid-2">
-        <div class="pricing-card">
-          <div class="pricing-icon-circle"><svg viewBox="0 0 24 24"><path d="M2 4l3 12h14l3-12-6 7-4-5-4 5-6-7z"/><path d="M3 20h18"/></svg></div>
-          <div class="pricing-plan">Popular</div>
-          <div class="pricing-amount"><span style="font-size:18px;color:var(--dim)">$</span>22</div>
-          <div class="pricing-unit">hour</div>
-          <ul class="pricing-features">
-            <li>WordPress Development</li><li>Installation Services</li><li>SEO Audit</li>
-            <li class="disabled">Hosting & Domain</li><li class="disabled">WordPress Security</li>
-          </ul>
-          <a href="#contact" class="btn-order" onclick="switchTab('contact',document.querySelectorAll('.nav-item')[2])">ORDER NOW &rsaquo;</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-icon-circle"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5-1.5-.5-3-2-3.5-3.5-.98.24-1.78.79-2.5 1.5z"/><path d="M12 15l-3-3 7.5-7.5c.83-.83 2.17-.83 3 0s.83 2.17 0 3L12 15z"/></svg></div>
-          <div class="pricing-plan">Pro</div>
-          <div class="pricing-amount"><span style="font-size:18px;color:var(--dim)">$</span>48</div>
-          <div class="pricing-unit">hour</div>
-          <ul class="pricing-features">
-            <li>WordPress Development</li><li>Installation Services</li><li>SEO Audit</li>
-            <li>Hosting & Domain <span class="tag-new">new</span></li><li>WordPress Security <span class="tag-new">new</span></li>
-          </ul>
-          <a href="#contact" class="btn-order" onclick="switchTab('contact',document.querySelectorAll('.nav-item')[2])">ORDER NOW &rsaquo;</a>
-        </div>
+    <!-- Pricing Section -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Pricing</h2>
+    <div class="grid-2">
+      <div class="pricing-card">
+        <div class="pricing-icon-circle"><svg viewBox="0 0 24 24"><path d="M2 4l3 12h14l3-12-6 7-4-5-4 5-6-7z"/><path d="M3 20h18"/></svg></div>
+        <div class="pricing-plan">Popular</div>
+        <div class="pricing-amount"><span style="font-size:18px;color:var(--dim)">$</span>22</div>
+        <div class="pricing-unit">hour</div>
+        <ul class="pricing-features">
+          <li>WordPress Development</li><li>Installation Services</li><li>SEO Audit</li>
+          <li class="disabled">Hosting & Domain</li><li class="disabled">WordPress Security</li>
+        </ul>
+        <a href="contact" class="btn-order">ORDER NOW &rsaquo;</a>
       </div>
-
-      <!-- Fun Facts Section -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Fun Facts</h2>
-      <div class="grid-2">
-        <div class="fact-card"><div class="fact-icon-circle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><text x="12" y="16" font-size="10" font-weight="bold" text-anchor="middle" fill="currentColor" stroke="none">JS</text></svg></div><div class="fact-number">100,000+ Lines</div><div class="fact-label">Written</div></div>
-        <div class="fact-card"><div class="fact-icon-circle"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div class="fact-number">3+ Countries</div><div class="fact-label">Visited</div></div>
+      <div class="pricing-card">
+        <div class="pricing-icon-circle"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5-1.5-.5-3-2-3.5-3.5-.98.24-1.78.79-2.5 1.5z"/><path d="M12 15l-3-3 7.5-7.5c.83-.83 2.17-.83 3 0s.83 2.17 0 3L12 15z"/></svg></div>
+        <div class="pricing-plan">Pro</div>
+        <div class="pricing-amount"><span style="font-size:18px;color:var(--dim)">$</span>48</div>
+        <div class="pricing-unit">hour</div>
+        <ul class="pricing-features">
+          <li>WordPress Development</li><li>Installation Services</li><li>SEO Audit</li>
+          <li>Hosting & Domain <span class="tag-new">new</span></li><li>WordPress Security <span class="tag-new">new</span></li>
+        </ul>
+        <a href="contact" class="btn-order">ORDER NOW &rsaquo;</a>
       </div>
+    </div>
 
-      <!-- Clients Section -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Clients</h2>
-      <div class="clients-grid">
-        <div class="client-item">freelancer</div>
-        <div class="client-item">Upwork</div>
+    <!-- Fun Facts Section -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Fun Facts</h2>
+    <div class="grid-2">
+      <div class="fact-card"><div class="fact-icon-circle"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><text x="12" y="16" font-size="10" font-weight="bold" text-anchor="middle" fill="currentColor" stroke="none">JS</text></svg></div><div class="fact-number">100,000+ Lines</div><div class="fact-label">Written</div></div>
+      <div class="fact-card"><div class="fact-icon-circle"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div class="fact-number">3+ Countries</div><div class="fact-label">Visited</div></div>
+    </div>
+
+    <!-- Clients Section -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Clients</h2>
+    <div class="clients-grid">
+      <div class="client-item">freelancer</div>
+      <div class="client-item">Upwork</div>
+    </div>
+
+    <!-- Coding Skills -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Coding Skills</h2>
+    <div class="card">
+      <div class="skill-item"><div class="skill-header"><span>WordPress</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span>PHP / MySQL</span><span>75%</span></div><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span>Angular / JavaScript</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span>HTML / CSS</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+    </div>
+
+    <!-- Languages -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Languages</h2>
+    <div class="card">
+      <div class="lang-item"><span>English</span><span class="lang-dots">•••••••••</span></div>
+      <div class="lang-item"><span>Nepali</span><span class="lang-dots">•••••••••</span></div>
+      <div class="lang-item"><span>Hindi</span><span class="lang-dots">•••••••••</span></div>
+    </div>
+
+    <!-- Knowledge & Services -->
+    <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Knowledge & Services</h2>
+    <div class="card">
+      <div class="knowledge-grid">
+        <div class="knowledge-item"><span>✓</span> Website hosting</div><div class="knowledge-item"><span>✓</span> WordPress Development</div>
+        <div class="knowledge-item"><span>✓</span> Hosting Installation</div><div class="knowledge-item"><span>✓</span> SEO Optimization</div>
+        <div class="knowledge-item"><span>✓</span> Responsive & Mobile-ready</div><div class="knowledge-item"><span>✓</span> Advertising Services</div>
+        <div class="knowledge-item"><span>✓</span> HTML, CSS, JQUERY</div><div class="knowledge-item"><span>✓</span> Search Engine Marketing</div>
       </div>
-
-      <!-- Coding Skills -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Coding Skills</h2>
-      <div class="card">
-        <div class="skill-item"><div class="skill-header"><span>WordPress</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span>PHP / MySQL</span><span>75%</span></div><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span>Angular / JavaScript</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
-        <div class="skill-item"><div class="skill-header"><span>HTML / CSS</span><span>95%</span></div><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
-      </div>
-
-      <!-- Languages -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Languages</h2>
-      <div class="card">
-        <div class="lang-item"><span>English</span><span class="lang-dots">•••••••••</span></div>
-        <div class="lang-item"><span>Nepali</span><span class="lang-dots">•••••••••</span></div>
-        <div class="lang-item"><span>Hindi</span><span class="lang-dots">•••••••••</span></div>
-      </div>
-
-      <!-- Knowledge & Services -->
-      <h2 class="section-title"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Knowledge & Services</h2>
-      <div class="card">
-        <div class="knowledge-grid">
-          <div class="knowledge-item"><span>✓</span> Website hosting</div><div class="knowledge-item"><span>✓</span> WordPress Development</div>
-          <div class="knowledge-item"><span>✓</span> Hosting Installation</div><div class="knowledge-item"><span>✓</span> SEO Optimization</div>
-          <div class="knowledge-item"><span>✓</span> Responsive & Mobile-ready</div><div class="knowledge-item"><span>✓</span> Advertising Services</div>
-          <div class="knowledge-item"><span>✓</span> HTML, CSS, JQUERY</div><div class="knowledge-item"><span>✓</span> Search Engine Marketing</div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div id="contact" class="tab-content"><div class="card empty-tab"><p>Contact section coming soon...</p></div></div>
+    </div>
+  </section>
 </main>
 
 <footer>&copy; <span id="year"></span> Unish Niraula. All rights reserved.</footer>
 
 <script>
-  document.getElementById('year').textContent=new Date().getFullYear();
-  function switchTab(t,e){
-    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
-    document.getElementById(t).classList.add('active'); if(e)e.classList.add('active');
-  }
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
