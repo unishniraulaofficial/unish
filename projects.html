@@ -28,11 +28,6 @@
   .btn-launch:hover{opacity:0.9}
   
   /* To-Do Widget Styles */
-  .todo-input-row{display:flex;gap:10px;margin-bottom:16px}
-  .todo-input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:var(--text);font-family:var(--mono);font-size:13px}
-  .todo-input:focus{outline:none;border-color:var(--amber)}
-  .btn-add{background:var(--amber);color:#0d0f12;border:none;border-radius:6px;padding:0 16px;font-family:var(--mono);font-weight:700;font-size:12px;cursor:pointer}
-  .btn-add:hover{opacity:0.9}
   .todo-list{list-style:none}
   .todo-item{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:8px;font-family:var(--mono);font-size:13px}
   .todo-item span{flex:1;cursor:pointer}
@@ -72,13 +67,15 @@
       
       <p class="project-desc">A fully functional interactive task manager built with JavaScript. Click the title or button above to visit the live site, or test the demo widget below.</p>
       
-      <div class="todo-input-row">
-        <input type="text" id="todoInput" class="todo-input" placeholder="Add a new task..." onkeypress="handleKeyPress(event)">
-        <button class="btn-add" onclick="addTask()">Add Task</button>
-      </div>
-      
       <ul id="todoList" class="todo-list">
-        <!-- Interactive tasks will appear here -->
+        <li class="todo-item">
+          <span onclick="this.parentElement.classList.toggle('completed')" title="Click to mark as complete/incomplete">Design responsive layout</span>
+          <button class="todo-delete" onclick="this.parentElement.remove()" title="Delete task">&times;</button>
+        </li>
+        <li class="todo-item completed">
+          <span onclick="this.parentElement.classList.toggle('completed')" title="Click to mark as complete/incomplete">Deploy initial project build</span>
+          <button class="todo-delete" onclick="this.parentElement.remove()" title="Delete task">&times;</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -96,37 +93,6 @@
     document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
     document.getElementById(t).classList.add('active');
     if (e) e.classList.add('active');
-  }
-
-  function handleKeyPress(e) {
-    if (e.key === 'Enter') addTask();
-  }
-
-  function addTask() {
-    const input = document.getElementById('todoInput');
-    const text = input.value.trim();
-    if (!text) return;
-    
-    const list = document.getElementById('todoList');
-    const li = document.createElement('li');
-    li.className = 'todo-item';
-    
-    const span = document.createElement('span');
-    span.textContent = text;
-    span.title = "Click to mark as complete/incomplete";
-    span.onclick = () => li.classList.toggle('completed');
-    
-    const delBtn = document.createElement('button');
-    delBtn.className = 'todo-delete';
-    delBtn.innerHTML = '&times;';
-    delBtn.title = "Delete task";
-    delBtn.onclick = () => list.removeChild(li);
-    
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    list.appendChild(li);
-    
-    input.value = '';
   }
 </script>
 </body>
