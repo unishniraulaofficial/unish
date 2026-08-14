@@ -12,7 +12,7 @@
   .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 10px;color:var(--dim);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;border-right:1px solid rgba(255,255,255,.05);user-select:none}
   .nav-item:last-child{border-right:none} .nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
   .nav-item:hover{color:var(--text);background:rgba(255,255,255,.02)} .nav-item.active{color:var(--amber);background:rgba(227,179,65,.03)}
-  .tab-content{display:none} .tab-content.active{display:block}
+  
   header{position:sticky;top:0;z-index:50;background:rgba(13,15,18,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
   .header-row{display:flex;align-items:center;gap:14px;padding:12px 20px;max-width:720px;margin:0 auto}
   .avatar-sm{border-radius:50%;overflow:hidden;background:var(--amber);flex-shrink:0;width:40px;height:40px} img{width:100%;height:100%;object-fit:cover;display:block}
@@ -46,40 +46,30 @@
 </header>
 
 <main class="container">
+  <!-- Clean navigation links without .html extensions -->
   <nav class="nav-box">
-    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</a>
-    <div class="nav-item active"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>PROJECTS</div>
-    <div class="nav-item" onclick="switchTab('contact',this)"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>CONTACT</div>
+    <a href="/" class="nav-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</a>
+    <a href="projects" class="nav-item active"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>PROJECTS</a>
+    <a href="contact" class="nav-item"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>CONTACT</a>
   </nav>
 
-  <div id="projects-content" class="tab-content active">
-    <div class="card">
-      <div class="project-header">
-        <div class="project-title">Project 1: Interactive To-Do Task Manager</div>
-        <a href="https://unishniraulaofficial.github.io/Project-1/" target="_blank" class="btn-launch">Open Live ↗</a>
-      </div>
-      
-      <p class="project-desc">A fully functional interactive task manager built with JavaScript. Click the button above to visit the live site.</p>
-      
-      <ul id="todoList" class="todo-list">
-      </ul>
+  <div class="card">
+    <div class="project-header">
+      <div class="project-title">Project 1: Interactive To-Do Task Manager</div>
+      <a href="https://unishniraulaofficial.github.io/Project-1/" target="_blank" class="btn-launch">Open Live ↗</a>
     </div>
+    
+    <p class="project-desc">A fully functional interactive task manager built with JavaScript. Click the button above to visit the live site.</p>
+    
+    <ul id="todoList" class="todo-list">
+    </ul>
   </div>
-
-  <div id="contact" class="tab-content"><div class="card" style="text-align:center;padding:40px;color:var(--dim);font-family:var(--mono);">Contact section coming soon...</div></div>
 </main>
 
 <footer>&copy; <span id="year"></span> Unish Niraula. All rights reserved.</footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  
-  function switchTab(t, e) {
-    document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
-    document.getElementById(t).classList.add('active');
-    if (e) e.classList.add('active');
-  }
 </script>
 </body>
 </html>
